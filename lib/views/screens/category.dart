@@ -7,6 +7,7 @@ import 'package:wallter/views/widgets/custum_appbar.dart';
 
 
 
+// ignore: must_be_immutable
 class CategoryScreen extends StatefulWidget {
   String catName;
   String catImgUrl;
@@ -104,7 +105,7 @@ bool isLoading  = true;
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => FullScreen(imageUrl: categoryResults[index].imgSrc),),);
+                                      builder: (context) => FullScreen(imgUrl: categoryResults[index].imgSrc),),);
                             },
                           child: Hero(
                             tag: categoryResults[index].imgSrc,

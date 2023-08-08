@@ -17,9 +17,9 @@ class ApiOperations {
     }).then((value) {
       Map<String, dynamic> jsonData = jsonDecode(value.body);
       List photos = jsonData['photos'];
-      photos.forEach((element) {
+      for (var element in photos) {
         trendingWallpapers.add(PhotosModel.fromApi2App(element));
-      });
+      }
     });
 
     return trendingWallpapers;
@@ -36,9 +36,9 @@ class ApiOperations {
       Map<String, dynamic> jsonData = jsonDecode(value.body);
       List photos = jsonData['photos'];
       searchWallpapersList.clear();
-      photos.forEach((element) {
+      for (var element in photos) {
         searchWallpapersList.add(PhotosModel.fromApi2App(element));
-      });
+      }
     });
 
     return searchWallpapersList;

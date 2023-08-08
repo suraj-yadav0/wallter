@@ -19,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
   bool isLoading = true;
 
   getCatDetails() async {
-    catModList = await ApiOperations.getCategoriesList();
+    catModList = ApiOperations.getCategoriesList();
     // print("GETTTING CAT MOD LIST");
     // print(catModList);
     setState(() {
@@ -98,7 +98,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     context,
                     MaterialPageRoute(
                       builder: (context) =>
-                          FullScreen(imageUrl: trendingWallList[index].imgSrc),
+                            FullScreen(imgUrl: trendingWallList[index].imgSrc),
                     ),
                   );
                 },

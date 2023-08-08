@@ -72,7 +72,7 @@ class _SearchScreenState extends State<SearchScreen> {
                     context,
                     MaterialPageRoute(
                       builder: (context) =>
-                          FullScreen(imageUrl: searchResults[index].imgSrc),
+                          FullScreen(imgUrl: searchResults[index].imgSrc),
                     ),
                   );
                 },
