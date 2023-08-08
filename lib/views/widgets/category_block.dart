@@ -2,51 +2,46 @@ import 'package:flutter/material.dart';
 import 'package:wallter/views/screens/category.dart';
 
 // ignore: must_be_immutable
-class CategoryBlock extends StatelessWidget {
-   CategoryBlock({super.key,required this.name});
-
-  String name;
+class CatBlock extends StatelessWidget {
+  String categoryName;
+  String categoryImgSrc;
+  CatBlock(
+      {super.key, required this.categoryImgSrc, required this.categoryName});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.all(7),
-      child: GestureDetector(
-        onTap: () {
-          Navigator.push(
+    return InkWell(
+      onTap: () {
+        Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => const CategoryScreen(),
-            ),
-          );
-        },
+                builder: (context) => CategoryScreen(
+                    catImgUrl: categoryImgSrc, catName: categoryName)));
+      },
+      child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 7),
         child: Stack(
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(12),
               child: Image.network(
-                  height: 50,
-                  width: 100,
-                  fit: BoxFit.cover,
-                  'https://images.pexels.com/photos/358189/pexels-photo-358189.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'),
+                  height: 50, width: 100, fit: BoxFit.cover, categoryImgSrc),
             ),
             Container(
               height: 50,
               width: 100,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(12),
-                color: Colors.black26,
-              ),
+                  color: Colors.black26,
+                  borderRadius: BorderRadius.circular(12)),
             ),
-             Positioned(
-              left: 35,
-              top: 15,
-              child: Text(
-                name,
-                style:
-                  const  TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-              ),
-            ),
+            Positioned(
+                left: 30,
+                top: 15,
+                child: Text(
+                  categoryName,
+                  style: const TextStyle(
+                      color: Colors.white, fontWeight: FontWeight.w600),
+                ))
           ],
         ),
       ),

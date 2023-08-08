@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:wallter/controller/api_operation.dart';
+import 'package:wallter/model/category_model.dart';
 import 'package:wallter/model/photo_model.dart';
+import 'package:wallter/views/screens/full_screeen.dart';
 import 'package:wallter/views/widgets/category_block.dart';
 import 'package:wallter/views/widgets/custum_appbar.dart';
 import 'package:wallter/views/widgets/search_bar.dart';
@@ -13,11 +15,24 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  late List<PhotosModel> trendingWallList;
+  late List<PhotosModel> trendingWallList;  late List<CategoryModel> catModList;
+  bool isLoading = true;
 
-  GetTrendingWallpapers() async {
+  getCatDetails() async {
+    catModList = await ApiOperations.getCategoriesList();
+    // print("GETTTING CAT MOD LIST");
+    // print(catModList);
+    setState(() {
+      catModList = catModList;
+    });
+  }
+
+
+  getTrendingWallpapers() async {
     trendingWallList = await ApiOperations.getTrendingWallpapers();
-    setState(() {});
+    setState(() {
+      isLoading = false;
+    });
   }
 
   @override
@@ -25,7 +40,8 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
 
     ApiOperations.getTrendingWallpapers();
-    GetTrendingWallpapers();
+    getTrendingWallpapers();
+    getCatDetails();
   }
 
   @override
@@ -41,11 +57,11 @@ class _HomeScreenState extends State<HomeScreen> {
         centerTitle: true,
         backgroundColor: Colors.white,
       ),
-      body: SingleChildScrollView(
+      body: isLoading ? const Center(child: CircularProgressIndicator(),) :  SingleChildScrollView(
         child: Column(children: [
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
-            child:  Search(),
+            child: Search(),
           ),
           Container(
             margin: const EdgeInsets.symmetric(vertical: 10),
@@ -53,10 +69,15 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 65,
               width: MediaQuery.of(context).size.width,
               child: ListView.builder(
-                  physics: const BouncingScrollPhysics(),
-                  scrollDirection: Axis.horizontal,
-                  itemCount: 10,
-                  itemBuilder: (context, index) =>  CategoryBlock(name: 'CARS',),),
+                physics: const BouncingScrollPhysics(),
+                scrollDirection: Axis.horizontal,
+                itemCount: catModList.length,
+                itemBuilder: (context, index) => CatBlock(
+
+                  categoryImgSrc: catModList[index].catImgUrl,
+                  categoryName: catModList[index].catName,
+                ),
+              ),
             ),
           ),
           Container(
@@ -71,20 +92,34 @@ class _HomeScreenState extends State<HomeScreen> {
                 mainAxisExtent: 400,
               ),
               itemCount: trendingWallList.length,
-              itemBuilder: (context, index) => Container(
-                height: 500,
-                width: 50,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Colors.amberAccent,
-                ),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(20),
-                  child: Image.network(
-                      height: 500,
-                      width: 50,
-                      fit: BoxFit.cover,
-                     trendingWallList[index].imgSrc),
+              itemBuilder: (context, index) => InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          FullScreen(imageUrl: trendingWallList[index].imgSrc),
+                    ),
+                  );
+                },
+                child: Hero(
+                  tag: trendingWallList[index].imgSrc,
+                  child: Container(
+                    height: 500,
+                    width: 50,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.amberAccent,
+                    ),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(20),
+                      child: Image.network(
+                          height: 500,
+                          width: 50,
+                          fit: BoxFit.cover,
+                          trendingWallList[index].imgSrc),
+                    ),
+                  ),
                 ),
               ),
             ),
