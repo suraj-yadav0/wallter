@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       title: 'Wallpaper God',
       theme: ThemeData(
 primaryColor: Colors.blue,
-useMaterial3: true,
+
   
       ),
       home: const HomeScreen(),

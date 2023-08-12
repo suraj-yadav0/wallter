@@ -4,6 +4,8 @@ import 'package:image_downloader/image_downloader.dart';
 
 import 'package:open_file/open_file.dart';
 
+
+
 // ignore: must_be_immutable
 class FullScreen extends StatelessWidget {
   String imgUrl;
@@ -12,7 +14,7 @@ class FullScreen extends StatelessWidget {
   Future<void> setWallpaperFromFile(
       String wallpaperUrl, BuildContext context) async {
     ScaffoldMessenger.of(context)
-        .showSnackBar(const SnackBar(content:  Text("Downloading Started...")));
+        .showSnackBar( const SnackBar(content: Text("Downloading Started...")));
     try {
       // Saved with this method.
       var imageId = await ImageDownloader.downloadImage(wallpaperUrl);
@@ -20,10 +22,10 @@ class FullScreen extends StatelessWidget {
         return;
       }
       // Below is a method of obtaining saved image information.
-       var fileName = await ImageDownloader.findName(imageId);
-       var path = await ImageDownloader.findPath(imageId);
-       var size = await ImageDownloader.findByteSize(imageId);
-       var mimeType = await ImageDownloader.findMimeType(imageId);
+     // var fileName = await ImageDownloader.findName(imageId);
+      var path = await ImageDownloader.findPath(imageId);
+    //  var size = await ImageDownloader.findByteSize(imageId);
+   //   var mimeType = await ImageDownloader.findMimeType(imageId);
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: const Text("Downloaded Sucessfully"),
         action: SnackBarAction(
@@ -34,9 +36,9 @@ class FullScreen extends StatelessWidget {
       ));
      // print("IMAGE DOWNLOADED");
     } on PlatformException catch (error) {
-      print(error);
+   //   print(error);
       ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text("Error Occured - $error"),),);
+          .showSnackBar(SnackBar(content: Text("Error Occured - $error")));
     }
   }
 

@@ -5,6 +5,8 @@ import 'package:http/http.dart' as http;
 import 'package:wallter/model/category_model.dart';
 import 'package:wallter/model/photo_model.dart';
 
+
+
 class ApiOperations {
   static List<PhotosModel> trendingWallpapers = [];
   static List<PhotosModel> searchWallpapersList = [];
@@ -53,7 +55,13 @@ class ApiOperations {
       "City",
       "Flowers",
       "Girls",
-      "Architecture"
+      "Architecture",
+      "Technology",
+      "Clothes",
+      "India",
+      "Places",
+      "Movies",
+      "Celebrity"
     ];
     cateogryModelList.clear();
     cateogryName.forEach((catName) async {
