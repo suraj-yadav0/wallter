@@ -50,8 +50,17 @@ class FullScreen extends StatelessWidget {
           onPressed: () async {
             await setWallpaperFromFile(imgUrl, context);
           },
-          child: const Text("Set Wallpaper")),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+          // child: const Text("Download"),
+          
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.transparent,
+            foregroundColor: Colors.amber,elevation: 1,
+            side: const BorderSide(width: 2,color: Colors.amber)
+            
+          ),
+          child: const Icon(Icons.download_sharp),
+          ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,

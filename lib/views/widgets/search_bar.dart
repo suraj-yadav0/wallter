@@ -5,7 +5,7 @@ import 'package:wallter/views/screens/search_screen.dart';
 class Search extends StatelessWidget {
   Search({super.key});
 
- final TextEditingController _searchController = TextEditingController();
+  final TextEditingController _searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +24,15 @@ class Search extends StatelessWidget {
         children: [
           Expanded(
             child: TextField(
+              onSubmitted: (value) {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        SearchScreen(query: _searchController.text),
+                  ),
+                );
+              },
               controller: _searchController,
               decoration: const InputDecoration(
                 hintText:
