@@ -4,6 +4,6 @@
  
 
 ## This is Wallpaper app for Android and IOS devices made with help of Pexels api.
+#Some Glimpse of My app
+![Screenshot_2023-08-12-23-17-11-30_b2de331155a16b364a0a9403825636fa](https://github.com/suraj-yadav0/wallter/assets/90672206/1a41be61-5330-473b-a8c3-54ecbad28c2b)
 
- #  It is a wallpaper app with clean UI and has lot of options of wallpapers for Android and IOS devices. The wallpapers are provided with the help of Pexels API. It has a search option to search wallpapers , and u can also view and download the Wallpapers.
-![20230812_194830](https://github.com/suraj-yadav0/wallter/assets/90672206/73713d19-aa40-4a9e-972e-ebb88cedf104)
