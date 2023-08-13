@@ -1,6 +1,6 @@
 # wallter
 # Download Apk Link
- https://github.com/suraj-yadav0/wallter/releases/download/Wallpaper-App/app-x86_64-release.apk
+[ https://github.com/suraj-yadav0/wallter/releases/download/Wallpaper-App/app-x86_64-release.apk](https://github.com/suraj-yadav0/wallter/releases/download/Wallpaper-App/app-debug.apk)
  
 
 ## This is Wallpaper app for Android and IOS devices made with help of Pexels api.
