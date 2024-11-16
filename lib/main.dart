@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Wallpaper God',
+      title: 'Wallter',
       theme: ThemeData(
         primaryColor: Colors.blue,
       ),

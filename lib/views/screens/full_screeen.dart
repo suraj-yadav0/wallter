@@ -37,6 +37,7 @@ class FullScreen extends StatelessWidget {
      // print("IMAGE DOWNLOADED");
     } on PlatformException catch (error) {
    //   print(error);
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text("Error Occured - $error")));
     }
