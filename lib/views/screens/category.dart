@@ -68,11 +68,13 @@ bool isLoading  = true;
                   top: 40,
                   child: Column(
                     children:  [
-                     const Text("Category",
-                          style: TextStyle(
-                              fontSize: 15,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w300)),
+                    const Center(
+                       child:  Text("Category",
+                            style: TextStyle(
+                                fontSize: 15,
+                                color: Colors.white,
+                                fontWeight: FontWeight.w300)),
+                     ),
                       Text(
                         widget.catName,
                         style: const TextStyle(
