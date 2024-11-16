@@ -38,6 +38,7 @@ dependencies:
   http: any
   open_file: ^3.3.2
   image_downloader: ^0.31.0
+  device_preview: ^1.2.0
 
 dev_dependencies:
   flutter_test:
