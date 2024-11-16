@@ -26,6 +26,7 @@ class FullScreen extends StatelessWidget {
       var path = await ImageDownloader.findPath(imageId);
     //  var size = await ImageDownloader.findByteSize(imageId);
    //   var mimeType = await ImageDownloader.findMimeType(imageId);
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: const Text("Downloaded Sucessfully"),
         action: SnackBarAction(
